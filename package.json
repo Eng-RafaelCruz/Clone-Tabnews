@@ -4,10 +4,11 @@
   "description": "Meu primeiro Projeto WEB (Fullstack)",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run services:up && next dev",
+    "dev": "next dev && npm run services:up",
     "services:up": "docker compose -f infra/compose.yaml up -d",
     "services:stop": "docker compose -f infra/compose.yaml stop",
     "services:down": "docker compose -f infra/compose.yaml down",
+    "stop": "kill $(lsof -t -i:3000) && npm run services:down",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
     "test": "jest",
